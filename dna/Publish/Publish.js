@@ -1,3 +1,5 @@
+
+
 'use strict';
 
 // -----------------------------------------------------------------
@@ -10,6 +12,7 @@
 
 function ArticleCreate (ArticleEntry) {
   var ArticleHash = commit("Article", ArticleEntry);
+  debug( ArticleEntry.title )
   return ArticleHash;
 }
 
