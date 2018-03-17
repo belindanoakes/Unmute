@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="/unmute.js"></script>
+</head>
+
+<body>
+    <form>
+        <p>Register as an author</p>
+        <p>Your registration will be stored in Holochain and the hash key for the new entry will be shown in the Hash text box below.</p>
+        <label for="AuthorName">Name</label>
+        <input type="text" id="AuthorName" size="50" value="type your name here" />
+        <label for="ID">ID</label>
+        <input type="text" id="ID" size="50" value="type your ID here" />
+        <button type="submit" id="submitEntry">Submit</button>
+    </form>
+
+    <form>
+        <p>Press the Read button and the hash key will be used to retrieve the entry</p>
+        <label for="hash">Hash</label>
+        <input type="text" id="hash" size="50" />
+        <input type="text" id="entryContent" />
+        <button type="submit" id="readEntry">Read</button>
+    </form>
+
+    <script type="text/javascript">
+        document.getElementById("submitEntry").addEventListener("click", function (event) {
+            event.preventDefault()
+            PersonCreate({ "name": document.getElementById('AuthorName').value, "ID": document.getElementById('ID').value }, function (hash) {
+                document.getElementById('hash').value = hash
+            })
+        });
+        document.getElementById("readEntry").addEventListener("click", function (event) {
+            event.preventDefault()
+            PersonRead(document.getElementById('hash').value, function (task) {
+                document.getElementById('entryContent').value = task.content
+            })
+        });
+    </script>
+</body>
+
+</html>
