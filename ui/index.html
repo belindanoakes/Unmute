@@ -1,27 +1,56 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/unmute.js"></script>
+    <style>
+    .bd-navbar {
+	  min-height: 4rem;
+	  background-color: #3d477c;
+  	box-shadow: 0 .5rem 1rem rgba(0,0,0,.05),inset 0 -1px 0 rgba(0,0,0,.1);
+    }
+  </style>
 </head>
 
 <body>
+
+  <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+    <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">Unmute</a>
+  </header>
+
+  <div class="container mt-5 mb-5">
     <form>
-        <p>Register as an author</p>
+        <h3>Register as an author</h3>
         <p>Your registration will be stored in Holochain and the hash key for the new entry will be shown in the Hash text box below.</p>
-        <label for="AuthorName">Name</label>
-        <input type="text" id="AuthorName" size="50" value="type your name here" />
-        <label for="ID">ID</label>
-        <input type="text" id="ID" size="50" value="type your ID here" />
-        <button type="submit" id="submitEntry">Submit</button>
+        <div class="form-group">
+          <label for="AuthorName">Name</label>
+          <input class="form-control" type="text" id="AuthorName" size="50" />
+        </div>
+        <div class="form-group">
+          <label for="ID">Password</label>
+          <input class="form-control" id="ID" size="50" type="password"/>
+      </div>
+       <button type="submit" id="submitEntry" class="btn btn-primary">Generate Private Key</button>
     </form>
 
     <form>
-        <p>Press the Read button and the hash key will be used to retrieve the entry</p>
-        <label for="hash">Hash</label>
-        <input type="text" id="hash" size="50" />
-        <input type="text" id="entryContent" />
-        <button type="submit" id="readEntry">Read</button>
+        <h3>Your Private Key</h3>
+        <p>Please keep your private key in a safe place! you will need it in order to login!</p>
+          <div class="form-group">
+        <input class="form-control" type="text" id="hash" size="50" placeholder="Please generate your private key first..." />
     </form>
+    </div>
+
+    <form>
+      <h3>Retrieve your Name</h3>
+        <p>Press the Read button and the hash key will be used to retrieve the entry</p>
+          <div class="form-group">
+        <input class="form-control" type="text" id="entryContent" />
+    </form>
+    </div>
+      <button type="submit" id="readEntry" class="btn btn-primary">Read</button>
+  </div>
 
     <script type="text/javascript">
         document.getElementById("submitEntry").addEventListener("click", function (event) {
