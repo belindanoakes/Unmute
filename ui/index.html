@@ -27,13 +27,14 @@
         document.getElementById("submitEntry").addEventListener("click", function (event) {
             event.preventDefault()
             PersonCreate({ "name": document.getElementById('AuthorName').value, "ID": document.getElementById('ID').value }, function (hash) {
-                document.getElementById('hash').value = hash
+                document.getElementById('hash').value = hash.replace(/['"]+/g, '')
+                // TO-DO: Need to find a better way to return the hash without the commas.
             })
         });
         document.getElementById("readEntry").addEventListener("click", function (event) {
             event.preventDefault()
             PersonRead(document.getElementById('hash').value, function (task) {
-                document.getElementById('entryContent').value = task.content
+                document.getElementById('entryContent').value = task.name
             })
         });
     </script>
