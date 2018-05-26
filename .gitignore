@@ -1,0 +1,5 @@
+
+config.json
+db/chain.db
+db/dht.db
+dna.hash
